@@ -1,11 +1,40 @@
+require('dotenv').config()
+const mongoose = require ('mongoose')
+
+
 const express = require('express')
 const app = express()
-const port = 3000
+const port = process.env.PORT
 
 const middleware = require('./utilities/middleware')
 
 app.use(express.json())
 app.use(middleware.requestLogger)
+
+ const URI = process.env.MONGODB_URI
+
+ const connect = () => {
+  return mongoose.connect(
+    URI,
+    {
+      useNewUrlParser: true,
+      useUnifiedTopology: true,
+      autoIndex: false
+    }
+  )
+ }
+
+
+ try {
+  connect()
+  
+   console.log('connected to mongoDB');
+
+} catch (error) {
+  console.log('error connection to MongoDB:', error. message);
+}
+
+//  mongoose.conn
  
 
 const users = [
