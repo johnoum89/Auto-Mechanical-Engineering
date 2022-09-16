@@ -12,28 +12,28 @@ app.use(express.json())
 app.use(middleware.requestLogger)
 
  const URI = process.env.MONGODB_URI
-
- const connect = () => {
+const connect = () => {
   return mongoose.connect(
-    URI,
-    {
-      useNewUrlParser: true,
-      useUnifiedTopology: true,
-      autoIndex: false
-    }
+  URI,
+  {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    autoIndex: false
+  }
   )
- }
+  }
 
-
- try {
+ 
+try {
   connect()
-  
-   console.log('connected to mongoDB');
-
+  console.log('connected to MongoDB');
 } catch (error) {
-  console.log('error connection to MongoDB:', error. message);
+  console.log('error connection to MongoDB:', error.message);
+  
 }
 
+
+ 
 //  mongoose.conn
  
 
